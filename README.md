@@ -10,7 +10,7 @@ Caso tenha chegado aqui por acidente, visite a [documentação oficial do Tergo 
 
 Configure seu ambiente para customização do código-fonte e compilação vendo [essa nossa documentação](https://github.com/TergoTeclados/Tergo-Sofle-Documentation/blob/main/guias/especifico_versao_wireless/COMO_MODIFICAR_CODIGO_FONTE.md#tergo-sofle---manual-de-modifica%C3%A7%C3%A3o-do-firmware).
 
-Então, leia o [tópico abaixo](#visão-geral) para entender um pouco sobre cada pasta desse repositório.
+Então, leia o [tópico abaixo](#resumo-sobre-as-pastas-deste-repositório) para entender um pouco sobre cada pasta desse repositório.
 
 Por fim, para gravar o firmware no seu teclado, leia [esse nosso guia](https://github.com/TergoTeclados/Tergo-Sofle-Documentation/blob/main/guias/especifico_versao_wireless/COMO_ATUALIZAR_FIRMWARE.md#manual-de-atualiza%C3%A7%C3%A3o-do-firmware---vers%C3%A3o-wireless).
 
@@ -20,15 +20,15 @@ Por fim, para gravar o firmware no seu teclado, leia [esse nosso guia](https://g
 
 - Modifique a variável `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT` do [config/sofle.conf](config/sofle.conf).
 
-Calcule de forma simples com base nos minutos que quer que ele demore e coloque o valor em milisegundos.
+Calcule de forma simples com base nos minutos que quer que ele demore e coloque o valor em milissegundos.
 
 > [!TIP]
 >
-> Exemplo: 15 minutos = `15 * 60 (segundos) * 1000 (mili)` = 900000
+> Exemplo: 15 minutos = `15 * 60 (segundos) * 1000 (milissegundos)` = 900000
 
 ### Outros
 
-> [!INFO]
+> [!NOTE]
 >
 > Outras sugestões de customizações podem surgir com o tempo e conforme demanda.
 >
@@ -46,7 +46,7 @@ A partir dessa configuração você customiza seu teclado.
 
 A pasta [config](./config/) possui a configuração e customizações do teclado.
 
-Você irá querer customizar o layout e funcionalidades no arquivo [config/sofle.keymap](./config/sofle.keymap), que possui diversos comentário para te ajudar.
+Você irá querer customizar o layout e funcionalidades no arquivo [config/sofle.keymap](./config/sofle.keymap), que possui diversos comentários para te ajudar.
 
 Além disso, há configurações que são feitas no [config/sofle.conf](./config/sofle.conf), como o tempo para o teclado entrar em modo de descanso.
 
@@ -58,7 +58,10 @@ Na pasta [boards/shields](./boards/shields/) você encontra "shields".
 
 Nela você encontrará as shields:
 - `dongle_display`, que configura uma tela para o receptor;
-- `sofle`, que cria as **metades** do teclado.
+- `sofle`, que cria o **receptor** (`sofle_dongle`);
+- `sofle_dongle_ssd1306` e `sofle_dongle_sh1106`, que definem o modelo de tela do receptor (displayV2 e displayV1, respectivamente).
+
+As **metades** do teclado (`sofle_left` e `sofle_right`) usam as shields do próprio ZMK e não têm pasta neste repositório.
 
 ## O coração do seu teclado é o receptor (dongle)
 
